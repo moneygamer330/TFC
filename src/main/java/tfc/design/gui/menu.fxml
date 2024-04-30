@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="869.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tfc.controller.MenuController">
+   <children>
+      <BorderPane prefHeight="869.0" prefWidth="804.0">
+         <top>
+            <Pane prefHeight="94.0" prefWidth="704.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="678.0" layoutY="26.0" prefHeight="42.0" prefWidth="77.0" text="Casa Guanchincahn" textAlignment="CENTER" wrapText="true" />
+                  <Button layoutX="32.0" layoutY="34.0" mnemonicParsing="false" onAction="#loadMenu" text="Menu" />
+               </children></Pane>
+         </top>
+         <left>
+            <Pane prefHeight="648.0" prefWidth="124.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="470.0" prefWidth="130.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadStarters" prefHeight="35.0" prefWidth="100.0" text="Entrantes" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadPrincipal" prefHeight="35.0" prefWidth="100.0" text="Principal" />
+                        <Button layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#loadDesserts" prefHeight="35.0" prefWidth="100.0" text="Postres" />
+                        <Button layoutX="10.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadDrinks" prefHeight="35.0" prefWidth="100.0" text="Bebidas" />
+                     </children></VBox>
+               </children></Pane>
+         </left>
+         <right>
+            <Pane prefHeight="648.0" prefWidth="230.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView layoutY="44.0" prefHeight="396.0" prefWidth="230.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Producto" />
+                      <TableColumn prefWidth="75.0" text="Cantidad" />
+                       <TableColumn prefWidth="75.0" text="Precio" />
+                    </columns>
+                  </TableView>
+               </children></Pane>
+         </right>
+         <bottom>
+            <Pane prefHeight="84.0" prefWidth="804.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <AnchorPane prefHeight="648.0" prefWidth="274.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane prefHeight="694.0" prefWidth="451.0" />
+               </children>
+            </AnchorPane>
+         </center></BorderPane>
+   </children>
+</AnchorPane>
