@@ -7,6 +7,7 @@ Table of contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Authors](#authors)
+- [License](#license)
 
 ### Introduction
 This project is part of the final work for the higher-level Cross-platform application development. It consists of a JavaFX application designed to facilitate the order process in a restaurant, allowing customers to place orders from their table quickly and efficiently.
@@ -30,3 +31,6 @@ To use the application, you need to run the `TFC.jar` file, and now you can use 
 
 ### Authors
 [Luis Souto Rey](https://github.com/moneygamer330)
+
+## License
+This project is licensed under the [MIT License](LICENSE).
