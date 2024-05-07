@@ -1,11 +1,11 @@
-package tfc.controller;
+package controller;
 
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DrinksController implements Initializable {
+public class DessertsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

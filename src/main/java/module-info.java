@@ -1,4 +1,4 @@
-module tfc.tfc {
+module tfc {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,6 +10,8 @@ module tfc.tfc {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens tfc.main to javafx.fxml;
-    exports tfc.main;
+    exports controller;
+    opens controller to javafx.fxml;
+    exports main;
+    opens main to javafx.fxml;
 }

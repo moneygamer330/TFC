@@ -1,4 +1,4 @@
-package tfc.controller;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,38 +7,33 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
 
     @FXML
-    private StackPane stackPane;
+    private StackPane stackPane = new StackPane();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("menu.fxml"));
-            stackPane.getChildren().removeAll();
-            stackPane.getChildren().setAll(fxml);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void loadMenu() {
-        try {
+        /*try {
             Parent fxml = FXMLLoader.load(getClass().getResource("menu.fxml"));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void loadStarters(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("starters.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/starters.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
@@ -48,7 +43,7 @@ public class MenuController implements Initializable {
 
     public void loadPrincipal(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("principal.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/principal.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
@@ -58,7 +53,7 @@ public class MenuController implements Initializable {
 
     public void loadDesserts(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("desserts.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/desserts.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
@@ -68,7 +63,7 @@ public class MenuController implements Initializable {
 
     public void loadDrinks(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("drinks.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/drinks.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
@@ -78,7 +73,7 @@ public class MenuController implements Initializable {
 
     public void loadOrder(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("order.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/order.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
@@ -88,7 +83,7 @@ public class MenuController implements Initializable {
 
     public void loadBill(javafx.event.ActionEvent actionEvent) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("bill.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/bill.fxml")));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException e) {
