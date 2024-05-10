@@ -13,10 +13,11 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     @FXML
-    private StackPane stackPane = new StackPane();
+    private StackPane stackPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        stackPane = new StackPane();
 
 
     }
