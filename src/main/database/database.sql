@@ -4,12 +4,16 @@ CREATE TABLE Product (
     price DECIMAL(10, 2) NOT NULL
 );
 
+CREATE TABLE Table (
+    id_table SERIAL PRIMARY KEY,
+    table_number INT NOT NULL,
+);
+
 CREATE TABLE Order (
     id_order SERIAL PRIMARY KEY,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) NOT NULL,
-    id_table INT,
-    FOREIGN KEY (id_table) REFERENCES Order(id_order)
+    FOREIGN KEY (id_table) REFERENCES Table(id_table)
 );
 
 CREATE TABLE OrderDetail (
@@ -20,3 +24,5 @@ CREATE TABLE OrderDetail (
     FOREIGN KEY (id_order) REFERENCES Order(id_order),
     FOREIGN KEY (id_product) REFERENCES Product(id_product)
 );
+
+

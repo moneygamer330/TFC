@@ -3,15 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="694" prefWidth="451" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DrinksController">
+<Pane prefHeight="694" prefWidth="451" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
    <children>
-      <Button fx:id="fanta" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Fanta" />
-      <Button fx:id="cocaCola" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="CocaCola" />
-      <Button fx:id="strawberryMilkshake" layoutX="259.0" layoutY="351.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="batido de fresa" />
-      <Button fx:id="tea" layoutX="42.0" layoutY="351.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tea" />
-      <Button fx:id="coffe" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Coffe" wrapText="true" />
-      <Button fx:id="water" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Water" />
-      <Button fx:id="beer" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="cerveza" />
-      <Button fx:id="sake" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="sake" />
+      <Button fx:id="fanta" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleFantaButtonAction" prefHeight="150.0" prefWidth="150.0" text="Fanta" />
+      <Button fx:id="cocaCola" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleCocaColaButtonAction" prefHeight="150.0" prefWidth="150.0" text="CocaCola" />
+      <Button fx:id="strawberryMilkshake" layoutX="259.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleStrawberryMilkshakeButtonAction" prefHeight="150.0" prefWidth="150.0" text="batido de fresa" />
+      <Button fx:id="tea" layoutX="42.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleTeaButtonAction" prefHeight="150.0" prefWidth="150.0" text="Tea" />
+      <Button fx:id="coffe" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleCoffeButtonAction" prefHeight="150.0" prefWidth="150.0" text="Coffe" wrapText="true" />
+      <Button fx:id="water" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleWaterButtonAction" prefHeight="150.0" prefWidth="150.0" text="Water" />
+      <Button fx:id="beer" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleBeerButtonAction" prefHeight="150.0" prefWidth="150.0" text="cerveza" />
+      <Button fx:id="sake" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleSakeButtonAction" prefHeight="150.0" prefWidth="150.0" text="sake" />
    </children>
 </Pane>

@@ -1,6 +1,6 @@
-package controller;
+package model;
 
-class OrderItem {
+public class OrderItem {
     private final String name;
     private int quantity;
 
