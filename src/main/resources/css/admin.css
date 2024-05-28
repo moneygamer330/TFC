@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+
+.vbox {
+    -fx-background-color: #faf3e0;
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-font-family: 'Sawarabi Mincho', serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d32f2f;
+    -fx-alignment: center;
+    -fx-padding: 10px 0;
+}
+
+.table-view {
+    -fx-background-color: #fffaf0;
+    -fx-border-color: #d32f2f;
+    -fx-border-width: 2px;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-column {
+    -fx-font-family: 'Sawarabi Mincho', sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+    -fx-alignment: center;
+}
+
+.table-cell {
+    -fx-font-family: 'Sawarabi Mincho', sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #5d4037;
+    -fx-background-color: #fffaf0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ffe0b2;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #d32f2f;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-family: 'Sawarabi Mincho', sans-serif;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-font-family: 'Sawarabi Mincho', sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: #d32f2f;
+    -fx-border-color: #b71c1c;
+    -fx-border-width: 2px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #b71c1c;
+}

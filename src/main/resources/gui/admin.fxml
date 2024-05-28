@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="768.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+    <children>
+        <Label text="Pedidos Recibidos" />
+        <TableView fx:id="ordersTable" prefHeight="650.0" prefWidth="984.0">
+            <columns>
+                <TableColumn fx:id="orderIdColumn" prefWidth="200.0" text="ID Pedido" />
+                <TableColumn fx:id="tableNumberColumn" prefWidth="200.0" text="Número de Mesa" />
+                <TableColumn fx:id="orderDetailsColumn" prefWidth="927.0" text="Detalles del Pedido" />
+            </columns>
+        </TableView>
+        <Button fx:id="deleteOrderButton" onAction="#deleteSelectedOrder" prefHeight="46.0" prefWidth="154.0" text="Borrar Pedido" />
+    </children>
+   <stylesheets>
+      <URL value="@../css/admin.css" />
+   </stylesheets>
+</VBox>

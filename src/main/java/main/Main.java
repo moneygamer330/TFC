@@ -9,32 +9,32 @@ import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
-
 public class Main extends Application {
 
-    double x, y;
+  double x, y;
 
-    @Override
-    public void start(Stage primaryStage) throws  Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu.fxml")));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu.fxml")));
+    primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        root.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
+    root.setOnMousePressed(
+        event -> {
+          x = event.getSceneX();
+          y = event.getSceneY();
         });
 
-        root.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - x);
-            primaryStage.setY(event.getScreenY() - y);
+    root.setOnMouseDragged(
+        event -> {
+          primaryStage.setX(event.getScreenX() - x);
+          primaryStage.setY(event.getScreenY() - y);
         });
 
-        primaryStage.setScene(new Scene(root, 869, 804));
-        primaryStage.show();
-    }
+    primaryStage.setScene(new Scene(root, 869, 1000));
+    primaryStage.show();
+  }
 
-    public static void main(String[] args){
-        launch(args);
-    }
-
+  public static void main(String[] args) {
+    launch(args);
+  }
 }
