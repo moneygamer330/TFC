@@ -15,7 +15,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu.fxml")));
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/admin.fxml")));
     primaryStage.initStyle(StageStyle.UNDECORATED);
 
     root.setOnMousePressed(

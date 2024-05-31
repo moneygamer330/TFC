@@ -6,11 +6,13 @@ public class OrderModel {
     private int id;
     private int tableId;
     private Date orderDate;
+    private String details;
 
-    public OrderModel(int id, int tableId, Date orderDate) {
+    public OrderModel(int id, int tableId, Date orderDate, String details) {
         this.id = id;
         this.tableId = tableId;
         this.orderDate = orderDate;
+        this.details = details;
     }
 
     public int getId() {
@@ -37,12 +39,21 @@ public class OrderModel {
         this.orderDate = orderDate;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
     @Override
     public String toString() {
-        return "Order{" +
+        return "OrderModel{" +
                 "id=" + id +
                 ", tableId=" + tableId +
                 ", orderDate=" + orderDate +
+                ", details='" + details + '\'' +
                 '}';
     }
 }

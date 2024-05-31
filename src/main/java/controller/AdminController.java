@@ -10,11 +10,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderModel;
-import model.ProductModel;
-
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
@@ -26,6 +27,8 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<OrderModel, Integer> tableNumberColumn;
     @FXML
+    private TableColumn<OrderModel, Timestamp> orderDateColumn;
+    @FXML
     private TableColumn<OrderModel, String> orderDetailsColumn;
     @FXML
     private Button deleteOrderButton;
@@ -35,9 +38,10 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableNumberColumn.setCellValueFactory(new PropertyValueFactory<>("tableNumber"));
+        orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         orderDetailsColumn.setCellValueFactory(new PropertyValueFactory<>("details"));
 
-        loadOrderData();
+        loadOrders();
 
         orderTable.setItems(orders);
 
@@ -48,12 +52,34 @@ public class AdminController implements Initializable {
         });
     }
 
-    private void loadOrderData() {
-        DatabaseController databaseController = new DatabaseController();
-        List<OrderModel> orderData = databaseController.getAllOrders(); // Método para obtener todos los pedidos de la base de datos
+    private void loadOrders() {
+        DatabaseController dbController = new DatabaseController();
+        try (Connection conn = dbController.getConnection()) {
+            Statement stmt = conn.createStatement();
+            String query = "SELECT o.id_order, t.table_number, o.order_date, " +
+                    "(SELECT STRING_AGG(CONCAT(p.product_name, ': ', d.quantity), ', ') " +
+                    "FROM order_detail d " +
+                    "JOIN product p ON d.id_product = p.id_product " +
+                    "WHERE d.id_order = o.id_order) AS details " +
+                    "FROM order_table o " +
+                    "JOIN table_order t ON o.id_table = t.id_table";
+            ResultSet rs = stmt.executeQuery(query);
 
-        orders.addAll(orderData);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            while (rs.next()) {
+                int orderId = rs.getInt("id_order");
+                int tableNumber = rs.getInt("table_number");
+                Timestamp orderDate = rs.getTimestamp("order_date");
+                String details = rs.getString("details");
+                OrderModel order = new OrderModel(orderId, tableNumber, orderDate, details);
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void deleteSelectedOrder() {

@@ -5,13 +5,13 @@
 
 <Pane prefHeight="694" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
     <children>
-        <Button fx:id="misoSoup" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleMisoSoupButtonAction" prefHeight="150.0" prefWidth="150.0" text="Sopa Miso" wrapText="true" />
-        <Button fx:id="edamame" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleEdamameButtonAction" prefHeight="150.0" prefWidth="150.0" text="Edamame" wrapText="true" />
-        <Button fx:id="salmonTataki" layoutX="259.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSalmonTatakiButtonAction" prefHeight="150.0" prefWidth="150.0" text="Tataki de salmón" wrapText="true" />
-        <Button fx:id="tunaTartare" layoutX="42.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleTunaTartareButtonAction" prefHeight="150.0" prefWidth="150.0" text="Tartar de atún " wrapText="true" />
-        <Button fx:id="vegetableTempura" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleVegetableTempuraButtonAction" prefHeight="150.0" prefWidth="150.0" text="Tempura de vegetales " wrapText="true" />
-        <Button fx:id="gyoza" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleGyozaButtonAction" prefHeight="150.0" prefWidth="150.0" text="Gyoza" wrapText="true" />
-        <Button fx:id="seaweedSalad" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleSeaweedSaladButtonAction" prefHeight="150.0" prefWidth="150.0" text="Ensalada de algas" wrapText="true" />
-        <Button fx:id="crabStuffedAvocado" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleCrabStuffedAvocadoButtonAction" prefHeight="150.0" prefWidth="150.0" text="Aguacate relleno de cangrejo" wrapText="true" />
+        <Button fx:id="misoSoup" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Sopa Miso" wrapText="true" />
+        <Button fx:id="edamame" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Edamame" wrapText="true" />
+        <Button fx:id="salmonTataki" layoutX="259.0" layoutY="347.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tataki de salmón" wrapText="true" />
+        <Button fx:id="tunaTartare" layoutX="42.0" layoutY="347.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tartar de atún " wrapText="true" />
+        <Button fx:id="vegetableTempura" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tempura de vegetales " wrapText="true" />
+        <Button fx:id="gyoza" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Gyoza" wrapText="true" />
+        <Button fx:id="seaweedSalad" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Ensalada de algas" wrapText="true" />
+        <Button fx:id="crabStuffedAvocado" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Aguacate relleno de cangrejo" wrapText="true" />
     </children>
 </Pane>

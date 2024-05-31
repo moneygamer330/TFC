@@ -4,11 +4,13 @@ public class ProductModel {
   private int id;
   private String name;
   private double price;
+  private int quantity;
 
   public ProductModel(int id, String name, double price) {
     this.id = id;
     this.name = name;
     this.price = price;
+    this.quantity = 1; // Iniciar con una cantidad de 1
   }
 
   public int getId() {
@@ -35,12 +37,24 @@ public class ProductModel {
     this.price = price;
   }
 
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public void incrementQuantity() {
+    this.quantity++;
+  }
+
+  public double getTotal() {
+    return price * quantity;
+  }
+
   @Override
   public String toString() {
-    return "Product{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", price=" + price +
-            '}';
+    return name + " - " + price + " - " + quantity;
   }
 }

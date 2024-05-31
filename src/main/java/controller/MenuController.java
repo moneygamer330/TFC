@@ -8,75 +8,137 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import model.OrderDetailModel;
+import model.OrderModel;
 import model.ProductModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 
 public class MenuController implements Initializable {
 
   @FXML StackPane stackPane;
   @FXML private Label dateTimeLabel;
-  @FXML private Button calculateTotalButton;
   @FXML private ObservableList<ProductModel> orderItems = FXCollections.observableArrayList();
-  @FXML private TableView<ProductModel> orderTable;
+  @FXML private TableView<ProductModel> productTable;
+  @FXML private TableColumn<ProductModel, String> productNameColumn;
+  @FXML private TableColumn<ProductModel, Double> priceColumn;
+  @FXML private TableColumn<ProductModel, Integer> quantityColumn;
   @FXML private Label orderSummaryLabel;
   @FXML private Button confirmOrderButton;
-  private final DatabaseController dbController = new DatabaseController();
+  @FXML private Button clearOrderButton;
+  private DatabaseController dbController = new DatabaseController();
+  private ProductController productController;
 
+  @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    initializeOrderTable();
+    dbController = new DatabaseController();
+
+    productNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+    priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+    quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+    productTable.setItems(orderItems);
+
+    confirmOrderButton.setOnAction(event -> confirmOrder());
+    clearOrderButton.setOnAction(event -> clearOrder());
+
+    updateTotalLabel();
     initializeDateTime();
-    loadProductsFromDatabase();
   }
 
-  private void loadProductsFromDatabase() {
-    List<ProductModel> products = DatabaseController.getAllProducts();
-
-    orderItems.addAll(products);
-    orderTable.setItems(orderItems);
+  public void setProductController(ProductController productController) {
+    this.productController = productController;
   }
 
-  private void initializeDateTime() {
-    AnimationTimer timer = new AnimationTimer() {
-      @Override
-      public void handle(long now) {
-        Date currentTime = new Date();
-        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss   dd/MM/yyyy");
-        String formattedDateTime = dateTimeFormat.format(currentTime);
-        dateTimeLabel.setText(formattedDateTime);
-      }
-    };
-    timer.start();
-  }
-
-  private void initializeOrderTable() {
-    orderTable.setItems(orderItems);
+  private void updateTotalLabel() {
+    double total = 0.00;
+    for (ProductModel product : orderItems) {
+      total += product.getPrice() * product.getQuantity();
+    }
+    orderSummaryLabel.setText(String.format("Total: %.2f€", total));
   }
 
   @FXML
   private void confirmOrder() {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmar Pedido");
+    alert.setHeaderText("¿Estás seguro de confirmar el pedido?");
+    alert.setContentText("Una vez confirmado, no se podrán realizar cambios en el pedido.");
+
+    ButtonType buttonTypeYes = new ButtonType("Sí");
+    ButtonType buttonTypeNo = new ButtonType("No");
+    alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.isPresent() && result.get() == buttonTypeYes) {
+      saveOrder(orderItems);
+      orderItems.clear();
+      orderSummaryLabel.setText("Total: 0.00€ (0 artículos)");
+      showAlert("Pedido confirmado", "El pedido ha sido confirmado correctamente.");
+    }
+  }
+
+  private void saveOrder(List<ProductModel> orderItems) {
+    Connection conn = null;
     try {
-      int orderId = dbController.saveOrder(orderItems);
-      if (orderId != -1) {
-        showAlert("Pedido confirmado", "El pedido se ha registrado correctamente. ID: " + orderId);
-        orderItems.clear();
-        updateOrderSummary();
-      } else {
-        showAlert("Error", "No se pudo registrar el pedido. Por favor, inténtalo de nuevo.");
+      conn = dbController.getConnection();
+      conn.setAutoCommit(false);
+
+      String orderQuery = "INSERT INTO order_table (id_table, order_date) VALUES (?, ?) RETURNING id_order";
+      try (PreparedStatement stmtOrder = conn.prepareStatement(orderQuery)) {
+        stmtOrder.setInt(1, 1); // Supongamos que id_table es 1. Ajusta esto según tu lógica.
+        stmtOrder.setTimestamp(2, new Timestamp(new Date().getTime()));
+        ResultSet rs = stmtOrder.executeQuery();
+
+        if (rs.next()) {
+          int orderId = rs.getInt(1);
+
+          String detailQuery = "INSERT INTO order_detail (id_order, id_product, quantity) VALUES (?, ?, ?)";
+          try (PreparedStatement stmtDetail = conn.prepareStatement(detailQuery)) {
+            for (ProductModel product : orderItems) {
+              stmtDetail.setInt(1, orderId);
+              stmtDetail.setInt(2, product.getId());
+              stmtDetail.setInt(3, product.getQuantity());
+              stmtDetail.addBatch();
+            }
+            stmtDetail.executeBatch();
+          }
+        }
       }
+
+      conn.commit();
     } catch (SQLException e) {
       e.printStackTrace();
-      showAlert("Error de base de datos", "Hubo un error al acceder a la base de datos.");
+      if (conn != null) {
+        try {
+          conn.rollback();
+        } catch (SQLException rollbackEx) {
+          rollbackEx.printStackTrace();
+        }
+      }
+    } finally {
+      if (conn != null) {
+        try {
+          conn.setAutoCommit(true);
+          conn.close();
+        } catch (SQLException closeEx) {
+          closeEx.printStackTrace();
+        }
+      }
     }
+  }
+
+
+  @FXML
+  private void clearOrder() {
+    orderItems.clear();
+    updateTotalLabel();
   }
 
   private void showAlert(String title, String message) {
@@ -87,23 +149,16 @@ public class MenuController implements Initializable {
     alert.showAndWait();
   }
 
-  public void updateOrderSummary() {
-    int totalItems = 0;
-    double totalPrice = 0.0;
-
-    for (OrderDetailModel item : orderTable.getItems()) {
-      totalItems += item.getQuantity();
-      totalPrice += item.getTotal();
+  public void addProductToOrder(ProductModel product) {
+    for (ProductModel orderItem : orderItems) {
+      if (orderItem.getId() == product.getId()) {
+        orderItem.incrementQuantity();
+        updateTotalLabel();
+        return;
+      }
     }
-
-    orderSummaryLabel.setText(String.format("Total: %.2f€ (%d artículos)", totalPrice, totalItems));
-  }
-
-  // Remove items from the order
-  public void clearOrder() {
-    orderItems.clear();
-    // Refresh list
-    orderTable.getItems().clear();
+    orderItems.add(product);
+    updateTotalLabel();
   }
 
 
@@ -157,5 +212,18 @@ public class MenuController implements Initializable {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private void initializeDateTime() {
+    AnimationTimer timer = new AnimationTimer() {
+      @Override
+      public void handle(long now) {
+        Date currentTime = new Date();
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss   dd/MM/yyyy");
+        String formattedDateTime = dateTimeFormat.format(currentTime);
+        dateTimeLabel.setText(formattedDateTime);
+      }
+    };
+    timer.start();
   }
 }
