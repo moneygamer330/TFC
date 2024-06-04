@@ -15,7 +15,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
@@ -53,8 +52,7 @@ public class AdminController implements Initializable {
     }
 
     private void loadOrders() {
-        DatabaseController dbController = new DatabaseController();
-        try (Connection conn = dbController.getConnection()) {
+        try (Connection conn = DatabaseController.getConnection()) {
             Statement stmt = conn.createStatement();
             String query = "SELECT o.id_order, t.table_number, o.order_date, " +
                     "(SELECT STRING_AGG(CONCAT(p.product_name, ': ', d.quantity), ', ') " +
@@ -64,8 +62,6 @@ public class AdminController implements Initializable {
                     "FROM order_table o " +
                     "JOIN table_order t ON o.id_table = t.id_table";
             ResultSet rs = stmt.executeQuery(query);
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             while (rs.next()) {
                 int orderId = rs.getInt("id_order");

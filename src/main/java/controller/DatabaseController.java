@@ -10,34 +10,32 @@ import java.util.List;
 
 public class DatabaseController {
 
-  private static final String URL = "jdbc:postgresql://localhost:5432/tfc";
-  private static final String USER = "post";
-  private static final String PASSWORD = "1234";
+    private static final String URL = "jdbc:postgresql://localhost:5432/tfc?currentSchema=tfc";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "1234";
 
-  private static Connection connection;
+    private static Connection connection;
 
-  public static Connection getConnection() {
-    if (connection == null) {
-      try {
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
+    public static Connection getConnection() {
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
-    return connection;
-  }
 
-  public static void closeConnection() {
-    if (connection != null) {
-      try {
-        connection.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
-  }
 
-  public Connection connect() throws SQLException {
+    public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
@@ -49,8 +47,7 @@ public class DatabaseController {
 
             List<ProductModel> products = new ArrayList<>();
             while (rs.next()) {
-                ProductModel product = new ProductModel(
-                        rs.getInt("id_product"),
+                ProductModel product = new ProductModel(1,
                         rs.getString("product_name"),
                         rs.getDouble("price")
                 );
@@ -63,10 +60,11 @@ public class DatabaseController {
     public void saveOrder(int tableId, List<OrderDetailModel> orderDetails) throws SQLException {
         String insertOrderSQL = "INSERT INTO order_table (id_table) VALUES (?) RETURNING id_order";
         String insertOrderDetailSQL = "INSERT INTO order_detail (id_order, id_product, quantity) VALUES (?, ?, ?)";
+        Connection conn = connect();
 
-        try (Connection conn = connect();
-             PreparedStatement stmtOrder = conn.prepareStatement(insertOrderSQL);
-             PreparedStatement stmtOrderDetail = conn.prepareStatement(insertOrderDetailSQL)) {
+        try (
+                PreparedStatement stmtOrder = conn.prepareStatement(insertOrderSQL);
+                PreparedStatement stmtOrderDetail = conn.prepareStatement(insertOrderDetailSQL)) {
 
             conn.setAutoCommit(false);
 
@@ -86,7 +84,17 @@ public class DatabaseController {
             conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 
 }
+
+
+

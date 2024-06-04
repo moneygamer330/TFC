@@ -1,17 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane prefHeight="694" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+<Pane prefHeight="800.0" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+    <stylesheets>
+        <URL value="@../css/menu.css" />
+    </stylesheets>
     <children>
-        <Button fx:id="fanta" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Fanta" wrapText="true" />
-        <Button fx:id="cocaCola" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="CocaCola" wrapText="true" />
-        <Button fx:id="strawberryMilkshake" layoutX="259.0" layoutY="351.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="batido de fresa" wrapText="true" />
-        <Button fx:id="tea" layoutX="42.0" layoutY="351.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tea" wrapText="true" />
-        <Button fx:id="coffe" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Coffe" wrapText="true" />
-        <Button fx:id="water" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Water" wrapText="true" />
-        <Button fx:id="beer" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="cerveza" wrapText="true" />
-        <Button fx:id="sake" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="sake" wrapText="true" />
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="23.0" spacing="5">
+            <Button fx:id="fanta" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER" prefHeight="120.0" prefWidth="124.0">
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Fanta.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Fanta" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€2.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="23.0" spacing="5">
+            <Button fx:id="cocaCola" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/coca-cola.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Coca Cola" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€2.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="217.0" spacing="5">
+            <Button fx:id="coffe" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Café.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Café" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€1.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="217.0" spacing="5">
+            <Button fx:id="water" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Agua.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Agua" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€1.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="411.0" spacing="5">
+            <Button fx:id="strawberryMilkshake" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Batido de fresa.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Batido de fresa" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€3.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="411.0" spacing="5">
+            <Button fx:id="tea" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Te.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Té" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€1.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="600.0" spacing="5">
+            <Button fx:id="beer" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Cerveza.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Cerveza" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€2.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="600.0" spacing="5">
+            <Button fx:id="sake" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Sake.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text styleClass="button-text" text="Sake" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€4.00" />
+        </VBox>
     </children>
 </Pane>

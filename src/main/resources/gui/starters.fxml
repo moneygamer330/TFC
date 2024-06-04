@@ -1,17 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="694" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+<Pane prefHeight="800.0" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+    <stylesheets>
+        <URL value="@../css/menu.css" />
+    </stylesheets>
     <children>
-        <Button fx:id="misoSoup" layoutX="259.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Sopa Miso" wrapText="true" />
-        <Button fx:id="edamame" layoutX="42.0" layoutY="24.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Edamame" wrapText="true" />
-        <Button fx:id="salmonTataki" layoutX="259.0" layoutY="347.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tataki de salmón" wrapText="true" />
-        <Button fx:id="tunaTartare" layoutX="42.0" layoutY="347.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tartar de atún " wrapText="true" />
-        <Button fx:id="vegetableTempura" layoutX="259.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Tempura de vegetales " wrapText="true" />
-        <Button fx:id="gyoza" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Gyoza" wrapText="true" />
-        <Button fx:id="seaweedSalad" layoutX="259.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Ensalada de algas" wrapText="true" />
-        <Button fx:id="crabStuffedAvocado" layoutX="42.0" layoutY="520.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Aguacate relleno de cangrejo" wrapText="true" />
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="23.0" spacing="5">
+            <Button fx:id="misoSoup" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/sopa-miso.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Sopa miso" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€5.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="23.0" spacing="5">
+            <Button fx:id="edamame" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/edamame.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Edamame" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€4.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="217.0" spacing="5">
+            <Button fx:id="vegetableTempura" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/tempura-de-verduras.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Témpura" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€6.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="217.0" spacing="5">
+            <Button fx:id="gyoza" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/gyozas.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Gyoza" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€7.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="417.0" spacing="5">
+            <Button fx:id="salmonTataki" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Tataki atun.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Tataki " />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€9.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="417.0" spacing="5">
+            <Button fx:id="tunaTartare" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/tatar-de-atun.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Tartar " />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€10.00" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="51.0" layoutY="600.0" spacing="5">
+            <Button fx:id="seaweedSalad" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/ensalada_algas.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Ensalada" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€5.50" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="261.0" layoutY="600.0" spacing="5">
+            <Button fx:id="crabStuffedAvocado" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="152.0" prefWidth="140" wrapText="true">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/aguacates-rellenos.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Aguacate" />
+                    </VBox>
+                </graphic>
+            </Button>
+            <Label alignment="CENTER" text="€8.00" />
+        </VBox>
     </children>
 </Pane>
