@@ -1,7 +1,4 @@
 Avances:
 
-- en la parte del menu, ya se pueden hacer pedidos, pero todavia no se pueden visualizar en la parte de administrador.
-
-- algunos productos no se pueden añadir a la lista porque no estan actaulizados, pero se añdiran sin problema
-
-- solo queda que se muestren los pedidos en la pantalle de administrador. 
+- postgres no tiene un .sql donde se guarden los datos,
+  es necesario que lo instale o utilice una remota o via docker.

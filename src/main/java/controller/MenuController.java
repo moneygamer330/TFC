@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
+import model.OrderModel;
 import model.ProductModel;
 
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class MenuController implements Initializable {
     private Button clearOrderButton;
     private DatabaseController dbController = new DatabaseController();
 
+    private Double totalPrice;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dbController = new DatabaseController();
@@ -65,6 +68,8 @@ public class MenuController implements Initializable {
         for (ProductModel product : orderItems) {
             total += product.getPrice() * product.getQuantity();
         }
+
+        totalPrice = total;
         orderSummaryLabel.setText(String.format("Total: %.2f€", total));
     }
 
@@ -94,21 +99,23 @@ public class MenuController implements Initializable {
             conn = DatabaseController.getConnection();
             conn.setAutoCommit(false);
 
-            String orderQuery = "INSERT INTO order_table (id_table, order_date) VALUES (?, ?) RETURNING id_order";
+            String orderQuery = "INSERT INTO order_table (table_number, order_date, total_price) VALUES (?, ?, ?) RETURNING id_order";
             try (PreparedStatement stmtOrder = conn.prepareStatement(orderQuery)) {
-                stmtOrder.setInt(1, 1); // Supongamos que id_table es 1. Ajusta esto según tu lógica.
+                stmtOrder.setInt(1, 1);
                 stmtOrder.setTimestamp(2, new Timestamp(new Date().getTime()));
+                stmtOrder.setDouble(3, totalPrice);
                 ResultSet rs = stmtOrder.executeQuery();
 
                 if (rs.next()) {
                     int orderId = rs.getInt(1);
 
-                    String detailQuery = "INSERT INTO order_detail (id_order, id_product, quantity) VALUES (?, ?, ?)";
+                    String detailQuery = "INSERT INTO order_detail (id_order, product_name, quantity) VALUES (?, ?, ?)";
                     try (PreparedStatement stmtDetail = conn.prepareStatement(detailQuery)) {
                         for (ProductModel product : orderItems) {
                             stmtDetail.setInt(1, orderId);
-                            stmtDetail.setInt(2, product.getId());
+                            stmtDetail.setString(2, product.getName());
                             stmtDetail.setInt(3, product.getQuantity());
+
                             stmtDetail.addBatch();
                         }
                         stmtDetail.executeBatch();

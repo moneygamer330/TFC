@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<Pane prefHeight="800.0" prefWidth="451" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
+<Pane prefHeight="800.0" prefWidth="451" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductController">
     <stylesheets>
         <URL value="@../css/menu.css" />
     </stylesheets>
     <children>
         <VBox alignment="CENTER" layoutX="51.0" layoutY="23.0" spacing="5">
-            <Button fx:id="fanta" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Fanta" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER" prefHeight="120.0" prefWidth="124.0">
                         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -27,7 +30,7 @@
             <Label alignment="CENTER" text="€2.50" />
         </VBox>
         <VBox alignment="CENTER" layoutX="261.0" layoutY="23.0" spacing="5">
-            <Button fx:id="cocaCola" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="CocaCola" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -42,7 +45,7 @@
             <Label alignment="CENTER" text="€2.50" />
         </VBox>
         <VBox alignment="CENTER" layoutX="51.0" layoutY="217.0" spacing="5">
-            <Button fx:id="coffe" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Cafe" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
@@ -57,7 +60,7 @@
             <Label alignment="CENTER" text="€1.50" />
         </VBox>
         <VBox alignment="CENTER" layoutX="261.0" layoutY="217.0" spacing="5">
-            <Button fx:id="water" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Agua" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
@@ -72,7 +75,7 @@
             <Label alignment="CENTER" text="€1.00" />
         </VBox>
         <VBox alignment="CENTER" layoutX="51.0" layoutY="411.0" spacing="5">
-            <Button fx:id="strawberryMilkshake" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="BatidoFresa" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
@@ -87,7 +90,7 @@
             <Label alignment="CENTER" text="€3.00" />
         </VBox>
         <VBox alignment="CENTER" layoutX="261.0" layoutY="411.0" spacing="5">
-            <Button fx:id="tea" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Te" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
@@ -102,7 +105,7 @@
             <Label alignment="CENTER" text="€1.50" />
         </VBox>
         <VBox alignment="CENTER" layoutX="51.0" layoutY="600.0" spacing="5">
-            <Button fx:id="beer" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Cerveza" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
@@ -117,7 +120,7 @@
             <Label alignment="CENTER" text="€2.00" />
         </VBox>
         <VBox alignment="CENTER" layoutX="261.0" layoutY="600.0" spacing="5">
-            <Button fx:id="sake" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
+            <Button fx:id="Sake" mnemonicParsing="false" onAction="#handleProductButtonAction" prefHeight="140" prefWidth="140">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
