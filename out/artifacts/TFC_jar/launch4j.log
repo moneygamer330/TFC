@@ -1,0 +1,34 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\money\Desktop\TFC\OrderEase\out\artifacts\TFC_jar\OrderEase.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\money\Desktop\TFC\OrderEase\out\artifacts\TFC_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	1.008.000
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\money\AppData\Local\Microsoft\WindowsApps;C:\Users\money\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\money\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Java\jre-1.8\bin
+JRE paths:	;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\money\AppData\Local\Microsoft\WindowsApps;C:\Users\money\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\money\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Java\jre-1.8\bin
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\java8path\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Docker\Docker\resources\bin\javaw.exe (not found)
+Check launcher:	C:\Users\money\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\money\AppData\Local\JetBrains\Toolbox\scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Users\money\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Java\jre-1.8\bin\javaw.exe (OK)
+Version string: 1.008.000_411 / 32-Bit (OK)
+Launcher:	C:\Program Files (x86)\Java\jre-1.8\bin\javaw.exe
+Launcher args:	-jar "C:\Users\money\Desktop\TFC\OrderEase\out\artifacts\TFC_jar\OrderEase.exe"
+Args length:	79/32768 chars
+Exit code:	0

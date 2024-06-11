@@ -2,3 +2,6 @@ Avances:
 
 - postgres no tiene un .sql donde se guarden los datos,
   es necesario que lo instale o utilice una remota o via docker.
+
+- el restos de aplicacion esta probada  y funciona perfectamente,
+solo habria que crear un contenedor docker para que funcione la aplicacion.
