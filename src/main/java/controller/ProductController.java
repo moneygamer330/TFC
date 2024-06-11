@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import model.ProductModel;
-
 import java.net.URL;
 import java.util.*;
 

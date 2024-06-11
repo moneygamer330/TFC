@@ -17,9 +17,9 @@
             <columns>
                 <TableColumn fx:id="orderIdColumn" prefWidth="200.0" text="ID Pedido" />
                 <TableColumn fx:id="tableNumberColumn" prefWidth="200.0" text="Número de Mesa" />
-                <TableColumn fx:id="orderDateColumn" prefWidth="119.0" text="Fecha del pedido" />
-                <TableColumn fx:id="orderDetailsColumn" prefWidth="667.0" text="Detalles del Pedido" />
-            <TableColumn fx:id="orderTotalColumn" maxWidth="600.0" prefWidth="140.0" text="Precio Total" />
+                <TableColumn fx:id="orderDateColumn" prefWidth="165.0" text="Fecha del pedido" />
+                <TableColumn fx:id="orderDetailsColumn" prefWidth="604.0" text="Detalles del Pedido" />
+            <TableColumn fx:id="orderTotalColumn" maxWidth="600.0" prefWidth="157.0" text="Precio Total" />
             </columns>
         </TableView>
         <Button fx:id="deleteOrderButton" onAction="#deleteSelectedOrder" prefHeight="46.0" prefWidth="154.0" text="Borrar Pedido" wrapText="true" />
